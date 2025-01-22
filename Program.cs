@@ -9,6 +9,12 @@ bool exitProgram = false;
 string userInput = "";
 int userChoice = 0;
 
+//variables for food item
+string name = "";
+string category = "";
+uint quantity = 1;
+string expirationDate = "";
+
 
 //Create a looping menu
 while (exitProgram == false)
@@ -37,11 +43,30 @@ while (exitProgram == false)
 
 
     //Execute user choice
-    if (userChoice == 0)
+    if (userChoice == 0) //add food items
     {
-        continue;
-        //TODO: Finish this option
-    } else if (userChoice == 1)
+        Console.Write("What is the food item name?: ");
+        name = Console.ReadLine();
+
+        Console.Write("What is the food item category?: ");
+        category = Console.ReadLine();
+
+        Console.Write("What is the food item quantity?: ");
+        userInput = Console.ReadLine();
+        while (!uint.TryParse(userInput, out quantity))
+        {
+            Console.Write("\nBruh, that's not a valid input.\n");
+            Console.Write("What is the food item quantity?: ");
+            userInput = Console.ReadLine();
+        }
+
+        Console.Write("What is the food item expiration date (i.e. 2025-01-07)?: ");
+        expirationDate = Console.ReadLine();
+
+        FoodItem item = new FoodItem(name, category, quantity, expirationDate);
+ 
+
+    } else if (userChoice == 1) //Delete Food Items
     {
         continue;
         //TODO: Finish this option

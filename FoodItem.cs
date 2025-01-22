@@ -11,17 +11,19 @@ namespace Mission3Assignment
         // Fields (making the variables this way increases security)
         private string name;
         private string category;
-        private int quantity;
+        private uint quantity;
         private string expirationDate;
 
-        // Constructor
-        public FoodItem(string name, string category, int quantity, string expirationDate)
+        public FoodItem(string name = "alien food", string category = "outer space", uint quantity = 1, string expirationDate = "2032-01-18")
         {
             this.name = name;
             this.category = category;
             this.quantity = quantity;
             this.expirationDate = expirationDate;
         }
+
+        // Constructor
+
 
 
         //TODO: create methods
