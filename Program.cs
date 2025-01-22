@@ -4,11 +4,13 @@
 Console.WriteLine("Welcome to the food bank!\nWhat would you like to do?");
 
 
-//Create a looping menu
+//initialize variables
 bool exitProgram = false;
 string userInput = "";
 int userChoice = 0;
 
+
+//Create a looping menu
 while (exitProgram == false)
 {
     Console.WriteLine("\nMenu");
@@ -18,6 +20,7 @@ while (exitProgram == false)
     Console.WriteLine("3. Exit the Program");
     Console.Write("Type a number 1-3: ");
     userInput = Console.ReadLine();
+
 
     //Check to see if user input is a number, then store value
     while (!int.TryParse(userInput, out userChoice))
@@ -31,7 +34,6 @@ while (exitProgram == false)
         Console.Write("Type a number 1-3: ");
         userInput = Console.ReadLine();
     }
-
 
 
     //Execute user choice
