@@ -1,4 +1,5 @@
-﻿using Mission3Assignment;
+﻿using System;
+using Mission3Assignment;
 
 //Welcome user
 Console.WriteLine("Welcome to the food bank!\nWhat would you like to do?");
@@ -14,6 +15,7 @@ string name = "";
 string category = "";
 uint quantity = 1;
 string expirationDate = "";
+List<FoodItem> foodItems = new List<FoodItem>(); //list to store food objects
 
 
 //Create a looping menu
@@ -63,18 +65,23 @@ while (exitProgram == false)
         Console.Write("What is the food item expiration date (i.e. 2025-01-07)?: ");
         expirationDate = Console.ReadLine();
 
-        FoodItem item = new FoodItem(name, category, quantity, expirationDate);
+
+        // Add Person objects to the list
+        foodItems.Add(new FoodItem(name, category, quantity, expirationDate));
  
 
     } else if (userChoice == 1) //Delete Food Items
     {
         continue;
         //TODO: Finish this option
-    } else if (userChoice == 2)
+    } else if (userChoice == 2) //Print List of Current Food Items
     {
-        continue;
-        //TODO: Finish this option
-    } else if (userChoice == 3)
+        for (int i = 0; i < foodItems.Count; i++)
+        {
+            foodItems[i].PrintItemAttributes();
+        }
+        
+    } else if (userChoice == 3) //Exit the Program
     {
         exitProgram = true;
     } else

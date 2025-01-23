@@ -14,6 +14,8 @@ namespace Mission3Assignment
         private uint quantity;
         private string expirationDate;
 
+
+        // Constructor
         public FoodItem(string name = "alien food", string category = "outer space", uint quantity = 1, string expirationDate = "2032-01-18")
         {
             this.name = name;
@@ -22,10 +24,12 @@ namespace Mission3Assignment
             this.expirationDate = expirationDate;
         }
 
-        // Constructor
-
-
-
-        //TODO: create methods
+        public void PrintItemAttributes()
+        {
+            Console.WriteLine($"\nName: {this.name}");
+            Console.WriteLine($"Category: {this.category}");
+            Console.WriteLine($"Quantity: {this.quantity}");
+            Console.WriteLine($"Expiration Date: {this.expirationDate}");
+        }
     }
 }
