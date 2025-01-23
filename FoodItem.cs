@@ -16,7 +16,7 @@ namespace Mission3Assignment
 
 
         // Constructor
-        public FoodItem(string name = "alien food", string category = "outer space", uint quantity = 1, string expirationDate = "2032-01-18")
+        public FoodItem(string name = "alien food", string category = "outer space", uint quantity = 1, string expirationDate = "01-18-2032")
         {
             this.name = name;
             this.category = category;
@@ -29,6 +29,13 @@ namespace Mission3Assignment
             Console.WriteLine($"\nName: {this.name}");
             Console.WriteLine($"Category: {this.category}");
             Console.WriteLine($"Quantity: {this.quantity}");
+            Console.WriteLine($"Expiration Date: {this.expirationDate}");
+        }
+
+
+        public void PrintForDeleting() //this shows limited data for the purpose of deleting inventory
+        {
+            Console.Write($"Name: {this.name}\t");
             Console.WriteLine($"Expiration Date: {this.expirationDate}");
         }
     }

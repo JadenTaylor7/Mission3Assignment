@@ -44,6 +44,7 @@ while (exitProgram == false)
     }
 
 
+
     //Execute user choice
     if (userChoice == 0) //add food items
     {
@@ -52,6 +53,7 @@ while (exitProgram == false)
 
         Console.Write("What is the food item category?: ");
         category = Console.ReadLine();
+        
 
         Console.Write("What is the food item quantity?: ");
         userInput = Console.ReadLine();
@@ -62,24 +64,76 @@ while (exitProgram == false)
             userInput = Console.ReadLine();
         }
 
-        Console.Write("What is the food item expiration date (i.e. 2025-01-07)?: ");
+        Console.Write("What is the food item expiration date (i.e. 01-07-2025)?: ");
         expirationDate = Console.ReadLine();
 
 
         // Add Person objects to the list
-        foodItems.Add(new FoodItem(name, category, quantity, expirationDate));
- 
+        if (name != "" && category != "" && expirationDate != "")
+        {
+            foodItems.Add(new FoodItem(name, category, quantity, expirationDate));
+        } else
+        {
+            foodItems.Add(new FoodItem()); //If they don't specify, they get alien food
+        }
 
     } else if (userChoice == 1) //Delete Food Items
     {
-        continue;
-        //TODO: Finish this option
+        bool deleting = true;
+
+        if (foodItems.Count == 0) //don't offer menu if no items in stock
+        {
+            deleting = false;
+        }
+
+        while(deleting == true) { //loopable menu
+            Console.WriteLine();
+            for (int i = 0; i < foodItems.Count; i++)
+            {
+                Console.Write($"{i}.\t");
+                foodItems[i].PrintForDeleting();
+            }
+            Console.WriteLine($"{foodItems.Count}.\t(Return to main menu)");
+
+            Console.WriteLine("Which item would you like to delete?");
+            Console.Write($"Choose a number from 0 to {foodItems.Count}: ");
+            userInput = Console.ReadLine();
+
+            while (!int.TryParse(userInput, out userChoice)) //reject input if not a number
+            {
+                Console.Write("\nBruh, that's not a valid input.\n");
+                Console.Write("What is the food item quantity?: ");
+                userInput = Console.ReadLine();
+            }
+
+            if (userChoice > foodItems.Count || userChoice < 0) //reject input if number outside of options available
+            {
+                Console.WriteLine("Haha, you're funny.");
+
+
+            } else if (userChoice == foodItems.Count) //exit to main menu
+            {
+                deleting = false;
+
+
+            } else //delete the item
+            {
+                if (foodItems[userChoice] is IDisposable disposableItem)
+                {
+                    disposableItem.Dispose();
+                }
+                foodItems.RemoveAt(userChoice);
+            }
+        }
+
+
     } else if (userChoice == 2) //Print List of Current Food Items
     {
         for (int i = 0; i < foodItems.Count; i++)
         {
             foodItems[i].PrintItemAttributes();
         }
+       
         
     } else if (userChoice == 3) //Exit the Program
     {
