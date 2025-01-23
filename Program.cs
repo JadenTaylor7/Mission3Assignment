@@ -102,13 +102,14 @@ while (exitProgram == false)
             while (!int.TryParse(userInput, out userChoice)) //reject input if not a number
             {
                 Console.Write("\nBruh, that's not a valid input.\n");
-                Console.Write("What is the food item quantity?: ");
+                Console.WriteLine("Which item would you like to delete?");
+                Console.Write($"Choose a number from 0 to {foodItems.Count}: ");
                 userInput = Console.ReadLine();
             }
 
             if (userChoice > foodItems.Count || userChoice < 0) //reject input if number outside of options available
             {
-                Console.WriteLine("Haha, you're funny.");
+                Console.WriteLine("\n\n\nHaha, you're funny.\n\n\n");
 
 
             } else if (userChoice == foodItems.Count) //exit to main menu
